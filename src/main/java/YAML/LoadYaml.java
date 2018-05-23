@@ -13,11 +13,11 @@ import java.util.Map;
  */
 
 public class LoadYaml {
-    public Object getAPI(String arg) throws IOException {
+    public String getAPI(String arg) throws IOException {
         Yaml yaml = new Yaml();
         InputStream in = new FileInputStream("config.yaml");
         Map<String, Object> object = (Map<String, Object>) yaml.load(in);
-        return object.get(arg);
+        return object.get(arg).toString();
     }
 }
 
