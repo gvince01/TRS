@@ -20,21 +20,19 @@ import java.util.logging.Logger;
 
 
 public class retrieveJson {
-    public HttpURLConnection connectToApi(String api_url, String api_key, String api_id) throws IOException{
+    public URL connectToApi(String api_url, String api_key, String api_id) throws IOException{
         //takes in the url, apiID and apiKEY from yaml file and returns HTTPURLConnection for other methods to work on
         LoadYaml connectYAML = new LoadYaml();
-        URL url = new URL(MessageFormat.format(connectYAML.getAPI(api_url), connectYAML.getAPI(api_id), connectYAML.getAPI(api_key)));
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        return conn;
+        return new URL(MessageFormat.format(connectYAML.getAPI(api_url), connectYAML.getAPI(api_id), connectYAML.getAPI(api_key)));
     }
 
-    public JsonObject getJSON(HttpURLConnection conn) {
-        System.out.println(conn);
+    public JsonObject getJSON(URL conn) {
+        //takes in the url, opens a connection and returns the jsonObject
         JsonObject out = null;
-        HttpURLConnection connect = conn;
         try {
+            HttpURLConnection httpConnect = (HttpURLConnection) conn.openConnection();
             JsonParser jsonparse = new JsonParser();
-            JsonElement jsonroot = jsonparse.parse(new InputStreamReader((InputStream) connect.getContent()));
+            JsonElement jsonroot = jsonparse.parse(new InputStreamReader((InputStream) httpConnect.getContent()));
             out = jsonroot.getAsJsonObject();
         } catch (IOException IOex) {
             System.err.println(IOex);
@@ -44,13 +42,6 @@ public class retrieveJson {
 
     public String parseURL(JsonObject tfljson){
         return tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString();
-    }
-
-    public static void main(String[] args) throws IOException {
-        retrieveJson my = new retrieveJson();
-        HttpURLConnection myConn = my.connectToApi("tfl-url",  "tfl-api-key", "tfl-app-id");
-        System.out.println(myConn);
-        my.getJSON(myConn);
     }
 
 }
