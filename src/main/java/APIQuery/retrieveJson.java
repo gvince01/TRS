@@ -43,5 +43,4 @@ public class retrieveJson {
     public String parseURL(JsonObject tfljson){
         return tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString();
     }
-
 }
