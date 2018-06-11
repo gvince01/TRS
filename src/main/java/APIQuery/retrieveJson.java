@@ -4,10 +4,13 @@ package APIQuery;
  * @author gvince01
  */
 
+import Messages.TFLMessage;
 import YAML.LoadYaml;
+import akka.actor.UntypedActor;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import jdk.internal.jline.internal.ShutdownHooks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +22,7 @@ import java.text.MessageFormat;
 import java.util.logging.Logger;
 
 
-public class retrieveJson {
+public class retrieveJson extends UntypedActor {
     public URL connectToApi(String api_url, String api_key, String api_id) throws IOException{
         //takes in the url, apiID and apiKEY from yaml file and returns HTTPURLConnection for other methods to work on
         LoadYaml connectYAML = new LoadYaml();
@@ -42,5 +45,11 @@ public class retrieveJson {
 
     public String parseURL(JsonObject tfljson){
         return tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString();
+    }
+
+    public Object onReceive(Object message) {
+        if (message instanceof TFLMessage){
+
+        }
     }
 }
