@@ -13,6 +13,7 @@ import java.io.*;
 
 public class Watson {
     public void classify(String image) throws IOException{
+        //takes url, classifies it against custom watson classfier
         FileInputStream imagesStream;
         LoadYaml watson_yaml = new LoadYaml();
         String watson_api = watson_yaml.getAPI("watson-api-key");

@@ -37,6 +37,7 @@ public class retrieveJson {
     }
 
     public String parseURL(JsonObject tfljson){
+        //takes json returns url of webcam image
         return tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString();
     }
 }
