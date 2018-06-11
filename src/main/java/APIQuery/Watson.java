@@ -1,65 +1,51 @@
 package APIQuery;
 
-import YAML.LoadYaml;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.Classifier;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.Classifiers;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.CreateClassifierOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ListClassifiersOptions;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import YAML.LoadYaml;
+import com.google.gson.JsonObject;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.*;
+
+import java.awt.*;
+import java.io.*;
+import java.net.URL;
+import java.util.Arrays;
 
 /**
  * @author gvince01
  */
 
 public class Watson {
-    public void getClassifiers(){
-        try {
-            LoadYaml watsonyaml = new LoadYaml();
-            String api_key = watsonyaml.getAPI("watson-api-key");
-            VisualRecognition service = new VisualRecognition("2018-03-19");
-            service.setApiKey(api_key);
-
-            ListClassifiersOptions listClassifiersOptions = new ListClassifiersOptions.Builder()
-                    .verbose(true)
-                    .build();
-            Classifiers classifiers = service.listClassifiers(listClassifiersOptions).execute();
-            System.out.println(classifiers);
-        }
-        catch (IOException ex){
-                System.err.println(ex);
-            }
+    public void classify(String image) throws IOException{
+        FileInputStream imagesStream;
+        LoadYaml watson_yaml = new LoadYaml();
+        String watson_api = watson_yaml.getAPI("watson-api-key");
+        IamOptions options = new IamOptions.Builder().apiKey(watson_api).build();
+        VisualRecognition service = new VisualRecognition("2018-03-19", options);
+        imagesStream = new FileInputStream("./14.jpg");
+        ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
+                .imagesFile(imagesStream)
+                .imagesFilename("image.jpg")
+                .addClassifierId("congestion_58613629")
+                .build();
+        ClassifiedImages result = service.classify(classifyOptions).execute();
+        System.out.println(result);
     }
 
-    public static void main(String[] args) {
-        Watson myWat = new Watson();
-        myWat.getClassifiers();
-    }
+
+//    pulls all classifiers from IBM
+//
+//    public void classifiers() throws IOException{
+//        LoadYaml my = new LoadYaml();
+//        String ul = my.getAPI("watson-api-key");
+//        IamOptions options = new IamOptions.Builder().apiKey(ul).build();
+//
+//        VisualRecognition service = new VisualRecognition("2018-03-19", options);
+//
+//        GetClassifierOptions getClassifierOptions = new GetClassifierOptions.Builder("congestion_58613629").build();
+//        Classifier classifier = service.getClassifier(getClassifierOptions).execute();
+//        System.out.println(classifier);
+//    }
+
 }
-
-
-//    public void classifierTrain() {
-//        VisualRecognition jam = new VisualRecognition("2018-05-22");
-//        try {
-//            LoadYaml watsonyaml = new LoadYaml();
-//            String api_key = watsonyaml.getAPI("watson-api-key");
-//            System.out.println(api_key);
-//            jam.setApiKey(api_key);
-//        } catch (IOException ex){
-//            System.err.println(ex);
-//        }
-//        try {
-//            CreateClassifierOptions createClassifierOptions = new CreateClassifierOptions
-//                    .Builder()
-//                    .name("TrafficJam")
-//                    .addClass("Conjested", new File("./congested.zip"))
-//                    .negativeExamples(new File("./notcongested.zip"))
-//                    .build();
-//            Classifier conjestion = jam.createClassifier(createClassifierOptions).execute();
-//            System.out.println(conjestion);
-//        } catch (FileNotFoundException ex){
-//            System.err.println(ex);
-//        }
