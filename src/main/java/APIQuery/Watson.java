@@ -2,15 +2,10 @@ package APIQuery;
 
 
 import YAML.LoadYaml;
-import com.google.gson.JsonObject;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.*;
-
-import java.awt.*;
 import java.io.*;
-import java.net.URL;
-import java.util.Arrays;
 
 /**
  * @author gvince01

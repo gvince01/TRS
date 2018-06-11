@@ -1,6 +1,5 @@
 package YAML;
 
-import jdk.internal.util.xml.impl.Input;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
