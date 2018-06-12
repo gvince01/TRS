@@ -28,20 +28,4 @@ public class Watson {
         ClassifiedImages result = service.classify(classifyOptions).execute();
         System.out.println(result);
     }
-
-
-//    pulls all classifiers from IBM
-//
-//    public void classifiers() throws IOException{
-//        LoadYaml my = new LoadYaml();
-//        String ul = my.getAPI("watson-api-key");
-//        IamOptions options = new IamOptions.Builder().apiKey(ul).build();
-//
-//        VisualRecognition service = new VisualRecognition("2018-03-19", options);
-//
-//        GetClassifierOptions getClassifierOptions = new GetClassifierOptions.Builder("congestion_58613629").build();
-//        Classifier classifier = service.getClassifier(getClassifierOptions).execute();
-//        System.out.println(classifier);
-//    }
-
 }
