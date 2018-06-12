@@ -2,6 +2,7 @@ package Actors;
 
 import APIQuery.Watson;
 import akka.actor.UntypedActor;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +21,7 @@ public class WatsonQueryActor extends UntypedActor {
         }
     }
 
-    private String classify(URL message) throws IOException {
+    private ClassifiedImages classify(URL message) throws IOException {
         Watson watsonQuery = new Watson();
         return watsonQuery.classify(message);
     }
