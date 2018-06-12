@@ -18,6 +18,8 @@ public class ClassificationActor extends UntypedActor {
         }
     }
     private boolean updatePage(ClassifiedImages imageClassification){
+        System.out.println("step 3 - done the classification");
+        System.out.println(imageClassification.getImages().get(0).getClassifiers().get(0).getClasses().toString());
         return imageClassification.getImages().get(0).getClassifiers().get(0).getClasses().toString() == "[]";
     }
 }

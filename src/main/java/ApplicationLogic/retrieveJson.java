@@ -39,7 +39,6 @@ public class retrieveJson {
 
     public URL parseURL(JsonObject tfljson) throws MalformedURLException {
         //takes json returns url of webcam image
-        System.out.println(tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").getAsString());
         return new URL(tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").getAsString());
     }
 }

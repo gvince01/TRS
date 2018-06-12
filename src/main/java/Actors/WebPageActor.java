@@ -18,8 +18,8 @@ public class WebPageActor extends UntypedActor {
         }
     }
 
-    private String updateWebPage(Boolean classificatioBool){
-        new MessageController().index(classificatioBool);
-        return "updated";
+    private Double updateWebPage(Boolean classificationBool){
+        System.out.println("step 4 - updated index " + classificationBool);
+        return 0.0;
     }
 }

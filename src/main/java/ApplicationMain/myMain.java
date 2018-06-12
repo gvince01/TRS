@@ -3,26 +3,24 @@ package ApplicationMain;
 
 import Actors.MasterActor;
 import Messages.Result;
-import WebPage.Application;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.dispatch.Await;
 import akka.pattern.Patterns;
 import akka.util.Duration;
 import akka.util.Timeout;
 import akka.dispatch.Future;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class myMain{
-    public static void main(String[] args) throws Exception{
-        SpringApplication.run(Application.class, args);
-        Timeout timeout = new Timeout(Duration.parse("10 seconds"));
+public class myMain {
+    public static void main(String[] args) throws Exception {
+        Timeout timeout = new Timeout(Duration.parse("5 seconds"));
         ActorSystem system = ActorSystem.create("TRSapp");
         ActorRef master = system.actorOf(new Props(MasterActor.class), "master");
-        master.tell("go");
+        system.scheduler().schedule(Duration.parse("1 second"), Duration.parse("10 seconds"), master, "go");
         Future<Object> future = Patterns.ask(master, new Result(), timeout);
-        System.out.println(future);
+        String result = (String) Await.result(future, timeout.duration());
+        System.out.println(result);
+        system.shutdown();
     }
 }
