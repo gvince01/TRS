@@ -1,5 +1,6 @@
 package Actors;
 
+import WebPage.MessageController;
 import akka.actor.UntypedActor;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 
@@ -7,7 +8,7 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImag
  * @author gvince01
  */
 
-public class PageUpdaterActor extends UntypedActor {
+public class ClassificationActor extends UntypedActor {
     public void onReceive(Object message) throws Exception {
         if(message instanceof ClassifiedImages){
             ClassifiedImages classifiedImage = (ClassifiedImages) message;
@@ -17,6 +18,6 @@ public class PageUpdaterActor extends UntypedActor {
         }
     }
     private boolean updatePage(ClassifiedImages imageClassification){
-        return (imageClassification.getImages().get(0).getClassifiers().get(0).getClasses().toString() == "[]");
+        return imageClassification.getImages().get(0).getClassifiers().get(0).getClasses().toString() == "[]";
     }
 }

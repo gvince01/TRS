@@ -15,7 +15,8 @@ import java.net.URL;
 public class MasterActor extends UntypedActor {
     ActorRef TFLQueryActor = getContext().actorOf(new Props(Actors.TFLQueryActor.class), "TFL");
     ActorRef WatsonQueryActor = getContext().actorOf(new Props(Actors.WatsonQueryActor.class), "Watson");
-    ActorRef PageUpdaterActor = getContext().actorOf(new Props(Actors.PageUpdaterActor.class), "PageUpdater");
+    ActorRef ClassificationActor = getContext().actorOf(new Props(Actors.ClassificationActor.class), "Classification");
+    ActorRef WebPageActor = getContext().actorOf(new Props(Actors.WebPageActor.class), "WebPage");
 
     public void onReceive(Object message) throws Exception {
         if (message instanceof String){
@@ -23,9 +24,11 @@ public class MasterActor extends UntypedActor {
         } else if (message instanceof URL){
             WatsonQueryActor.tell(message, getSelf());
         } else if (message instanceof ClassifiedImages){
-            PageUpdaterActor.tell(message, getSelf());
+            ClassificationActor.tell(message, getSelf());
+        } else if (message instanceof Boolean) {
+            WebPageActor.tell(message, getSelf());
         } else {
-            unhandled(message);
+                unhandled(message);
+            }
         }
     }
-}
