@@ -6,13 +6,14 @@ import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.*;
 import java.io.*;
+import java.net.URL;
 
 /**
  * @author gvince01
  */
 
 public class Watson {
-    public void classify(String image) throws IOException{
+    public String classify(URL image) throws IOException{
         //takes url, classifies it against custom watson classfier
         FileInputStream imagesStream;
         LoadYaml watson_yaml = new LoadYaml();
@@ -26,6 +27,6 @@ public class Watson {
                 .addClassifierId("congestion_58613629")
                 .build();
         ClassifiedImages result = service.classify(classifyOptions).execute();
-        System.out.println(result);
+        return result.toString();
     }
 }

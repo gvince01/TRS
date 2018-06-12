@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.MessageFormat;
 
@@ -36,8 +37,8 @@ public class retrieveJson {
         return out;
     }
 
-    public String parseURL(JsonObject tfljson){
+    public URL parseURL(JsonObject tfljson) throws MalformedURLException {
         //takes json returns url of webcam image
-        return tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString();
+        return new URL(tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString());
     }
 }

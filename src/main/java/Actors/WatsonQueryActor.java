@@ -1,0 +1,27 @@
+package Actors;
+
+import APIQuery.Watson;
+import akka.actor.UntypedActor;
+
+import java.io.IOException;
+import java.net.URL;
+
+/**
+ * @author gvince01
+ */
+
+public class WatsonQueryActor extends UntypedActor {
+    public void onReceive(Object message) throws IOException{
+        if (message instanceof URL){
+            URL imageURL = (URL) message;
+            getSender().tell(classify(imageURL));
+        } else {
+            unhandled(message);
+        }
+    }
+
+    private String classify(URL message) throws IOException {
+        Watson watsonQuery = new Watson();
+        return watsonQuery.classify(message);
+    }
+}
