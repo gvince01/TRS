@@ -23,9 +23,8 @@ public class TFLQueryActor extends UntypedActor {
     }
 
     private URL evaluateExpression() throws Exception{
-        LoadYaml run = new LoadYaml();
         retrieveJson tfl = new retrieveJson();
-        URL connectionURL = tfl.connectToApi(run.getAPI("tfl-url"), run.getAPI("tfl-app-id"), run.getAPI("tfl-api-key"));
+        URL connectionURL = tfl.connectToApi("tfl-url", "tfl-app-id","tfl-api-key");
         JsonObject connectionJSON = tfl.getJSON(connectionURL);
         return tfl.parseURL(connectionJSON);
     }

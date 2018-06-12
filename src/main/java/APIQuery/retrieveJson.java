@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 
 
 public class retrieveJson {
-    public URL connectToApi(String api_url, String api_key, String api_id) throws IOException{
+    public URL connectToApi(String api_url ,String api_id ,String api_key) throws IOException{
         //takes in the url, apiID and apiKEY from yaml file and returns HTTPURLConnection for other methods to work on
         LoadYaml connectYAML = new LoadYaml();
         return new URL(MessageFormat.format(connectYAML.getAPI(api_url), connectYAML.getAPI(api_id), connectYAML.getAPI(api_key)));
@@ -39,6 +39,6 @@ public class retrieveJson {
 
     public URL parseURL(JsonObject tfljson) throws MalformedURLException {
         //takes json returns url of webcam image
-        return new URL(tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").toString());
+        return new URL(tfljson.get("additionalProperties").getAsJsonArray().get(1).getAsJsonObject().get("value").getAsString());
     }
 }
