@@ -23,7 +23,6 @@ public class WatsonQueryActor extends UntypedActor {
 
     private ClassifiedImages classify(URL message) throws IOException {
         Watson watsonQuery = new Watson();
-        System.out.println("step 2 - updated - have passed the url to watson");
         return watsonQuery.classify(message);
     }
 }

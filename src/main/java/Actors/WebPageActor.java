@@ -1,5 +1,6 @@
 package Actors;
 
+import Messages.Result;
 import WebPage.MessageController;
 import akka.actor.UntypedActor;
 
@@ -8,18 +9,21 @@ import akka.actor.UntypedActor;
  */
 
 public class WebPageActor extends UntypedActor {
+    private boolean classificationResult;
+
     @Override
     public void onReceive(Object message) throws Exception {
-        if (message instanceof Boolean){
+        if (message instanceof Boolean) {
             Boolean classificationBool = (Boolean) message;
-            getSender().tell(updateWebPage(classificationBool));
+            updateWebPage(classificationBool.booleanValue());
+        } else if (message instanceof Result){
+            getSender().tell(classificationResult);
         } else {
             unhandled(message);
         }
     }
 
-    private Double updateWebPage(Boolean classificationBool){
-        System.out.println("step 4 - updated index " + classificationBool);
-        return 0.0;
+    private void updateWebPage(Boolean classificationBool){
+        classificationResult = classificationBool;
     }
 }

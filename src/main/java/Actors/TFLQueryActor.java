@@ -25,7 +25,6 @@ public class TFLQueryActor extends UntypedActor {
         retrieveJson tfl = new retrieveJson();
         URL connectionURL = tfl.connectToApi("tfl-url", "tfl-app-id","tfl-api-key");
         JsonObject connectionJSON = tfl.getJSON(connectionURL);
-        System.out.println("step 1 - passing url");
         return tfl.parseURL(connectionJSON);
     }
 }

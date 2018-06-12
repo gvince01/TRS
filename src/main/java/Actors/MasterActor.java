@@ -1,5 +1,6 @@
 package Actors;
 
+import Messages.Result;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
@@ -19,16 +20,18 @@ public class MasterActor extends UntypedActor {
     ActorRef WebPageActor = getContext().actorOf(new Props(Actors.WebPageActor.class), "WebPage");
 
     public void onReceive(Object message) throws Exception {
-        if (message instanceof String){
+        if (message instanceof String) {
             TFLQueryActor.tell(message, getSelf());
-        } else if (message instanceof URL){
+        } else if (message instanceof URL) {
             WatsonQueryActor.tell(message, getSelf());
-        } else if (message instanceof ClassifiedImages){
+        } else if (message instanceof ClassifiedImages) {
             ClassificationActor.tell(message, getSelf());
         } else if (message instanceof Boolean) {
             WebPageActor.tell(message, getSelf());
-        } else {
-                unhandled(message);
-            }
+        } else if (message instanceof Result) {
+            WebPageActor.forward(message, getContext());
+        }else {
+            unhandled(message);
         }
     }
+}

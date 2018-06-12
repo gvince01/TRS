@@ -19,7 +19,7 @@ public class myMain {
         ActorRef master = system.actorOf(new Props(MasterActor.class), "master");
         system.scheduler().schedule(Duration.parse("1 second"), Duration.parse("10 seconds"), master, "go");
         Future<Object> future = Patterns.ask(master, new Result(), timeout);
-        String result = (String) Await.result(future, timeout.duration());
+        Boolean result = (Boolean) Await.result(future, timeout.duration());
         System.out.println(result);
         system.shutdown();
     }
