@@ -1,7 +1,6 @@
 package Actors;
 
-import APIQuery.retrieveJson;
-import YAML.LoadYaml;
+import ApplicationLogic.retrieveJson;
 import akka.actor.UntypedActor;
 import com.google.gson.JsonObject;
 

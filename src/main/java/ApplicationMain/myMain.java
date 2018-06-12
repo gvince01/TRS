@@ -1,4 +1,4 @@
-package ApplicationLogic;
+package ApplicationMain;
 
 
 import Actors.MasterActor;
@@ -6,7 +6,6 @@ import Messages.Result;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import akka.dispatch.Await;
 import akka.pattern.Patterns;
 import akka.util.Duration;
 import akka.util.Timeout;

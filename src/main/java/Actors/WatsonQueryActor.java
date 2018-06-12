@@ -1,6 +1,6 @@
 package Actors;
 
-import APIQuery.Watson;
+import ApplicationLogic.Watson;
 import akka.actor.UntypedActor;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 

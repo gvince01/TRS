@@ -1,4 +1,4 @@
-package APIQuery;
+package ApplicationLogic;
 
 /**
  * @author gvince01

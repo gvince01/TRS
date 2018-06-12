@@ -1,5 +1,4 @@
-import APIQuery.retrieveJson;
-import com.google.gson.JsonObject;
+import ApplicationLogic.retrieveJson;
 import org.junit.Test;
 
 import java.io.IOException;

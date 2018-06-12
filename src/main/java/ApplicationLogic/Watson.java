@@ -1,4 +1,4 @@
-package APIQuery;
+package ApplicationLogic;
 
 
 import YAML.LoadYaml;
@@ -6,7 +6,6 @@ import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.*;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
