@@ -22,7 +22,6 @@ public class WatsonQueryActor extends UntypedActor {
     }
 
     private ClassifiedImages classify(URL message) throws IOException {
-        Watson watsonQuery = new Watson();
-        return watsonQuery.classify(message);
+        return new Watson().classify(message);
     }
 }

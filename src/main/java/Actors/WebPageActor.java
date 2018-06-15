@@ -1,7 +1,6 @@
 package Actors;
 
 import Messages.Result;
-import WebPage.MessageController;
 import akka.actor.UntypedActor;
 
 /**
@@ -14,8 +13,7 @@ public class WebPageActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         if (message instanceof Boolean) {
-            Boolean classificationBool = (Boolean) message;
-            updateWebPage(classificationBool.booleanValue());
+            updateWebPage((Boolean) message);
         } else if (message instanceof Result){
             getSender().tell(classificationResult);
         } else {

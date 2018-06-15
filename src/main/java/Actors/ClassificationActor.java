@@ -1,6 +1,5 @@
 package Actors;
 
-import WebPage.MessageController;
 import akka.actor.UntypedActor;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 
