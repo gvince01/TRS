@@ -1,3 +1,5 @@
+package YAMLTest;
+
 import YAML.LoadYaml;
 import org.junit.Test;
 

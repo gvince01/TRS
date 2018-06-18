@@ -1,3 +1,5 @@
+package ApplicationLogicTest;
+
 import ApplicationLogic.retrieveJson;
 import org.junit.Test;
 

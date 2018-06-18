@@ -3,7 +3,7 @@ package ApplicationMain;
 
 import Actors.MasterActor;
 import Messages.Result;
-import WebPage.WebSocketUpdater;
+//import WebPage.WebSocketUpdater;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Cancellable;
@@ -16,7 +16,7 @@ import akka.dispatch.Future;
 
 public class myMain {
     public static void main(String[] args) throws Exception {
-        WebSocketUpdater my = new WebSocketUpdater();
+//        WebSocketUpdater my = new WebSocketUpdater();
         Timeout timeout = new Timeout(Duration.parse("10 seconds"));
         ActorSystem system = ActorSystem.create("TRSapp");
         ActorRef master = system.actorOf(new Props(MasterActor.class), "master");

@@ -2,12 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>TRS</title>
 </head>
 <body>
+
+hello world
 <span id="messageGoesHere"></span>
 
 <script type="text/javascript">
-    var ws = new WebSocket("ws://localhost:8080");
+    console.log("hello world");
+    var ws = new WebSocket("ws://localhost:8080/websocketendpoint");
+    console.log("Trying me best");
     ws.onmessage = function(event) {
         var mySpan = document.getElementById("messageGoesHere");
         mySpan.innerHTML=event.data;

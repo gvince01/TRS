@@ -19,8 +19,12 @@ import java.util.concurrent.TimeUnit;
 @ServerEndpoint("/websocketendpoint")
 public class WebSocketUpdater {
 
+    static ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+
+    private static Set<Session> allSessions;
+
     @OnOpen
-    public void onOpen(Session session, Boolean Congested){
+    public void onOpen(Session session){
         System.out.println("hello world...");
         try{
             session.getBasicRemote().sendText("Hi there, Euston Road is currently ");
