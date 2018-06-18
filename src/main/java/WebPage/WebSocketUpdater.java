@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class WebSocketUpdater {
 
     @OnOpen
-    public void onOpen(Session session, Boolean Congested){
+    public void onOpen(Session session){
         System.out.println("hello world...");
         try{
             session.getBasicRemote().sendText("Hi there, Euston Road is currently ");
