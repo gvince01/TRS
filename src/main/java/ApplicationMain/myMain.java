@@ -2,21 +2,27 @@ package ApplicationMain;
 
 import Actors.MasterActor;
 import Messages.Result;
-import WebPage.WebSocketUpdater;
 import akka.actor.*;
 import akka.dispatch.Await;
+import akka.dispatch.Future;
 import akka.pattern.Patterns;
-import akka.util.Duration;
 import akka.util.Timeout;
+import scala.concurrent.duration.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class myMain {
     public static void main(String[] args) throws Exception {
-        Timeout timeout = new Timeout(Duration.parse("10 seconds"));
+        Timeout timeout =  new Timeout(5, TimeUnit.SECONDS);
         ActorSystem system = ActorSystem.create("TRSapp");
-        ActorRef master = system.actorOf(new Props(MasterActor.class), "master");
-        Cancellable cancellable = system.scheduler().schedule(Duration.parse("0 seconds"), Duration.parse("5 minutes"), master, "start");
+        ActorRef master = system.actorOf(Props.create(MasterActor.class), "master");
+        Cancellable cancel = system.scheduler().schedule(
+                Duration.create(0, TimeUnit.MINUTES),
+                Duration.create(10, TimeUnit.MINUTES),
+                master,
+                "Tick",
+                system.dispatcher(),
+                null);
         Thread.sleep(5000);
-        Boolean result = (Boolean) Await.result(Patterns.ask(master, new Result(), timeout), timeout.duration());
-        System.out.println(result);
+
     }
 }

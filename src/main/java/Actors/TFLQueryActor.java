@@ -1,7 +1,10 @@
 package Actors;
 
 import ApplicationLogic.retrieveJson;
+import akka.actor.AbstractActor;
 import akka.actor.UntypedActor;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import com.google.gson.JsonObject;
 
 import java.net.URL;
@@ -10,15 +13,18 @@ import java.net.URL;
  * @author gvince01
  */
 
-public class TFLQueryActor extends UntypedActor {
+public class TFLQueryActor extends AbstractActor {
+    private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-    public void onReceive(Object message) throws Exception{
-        if(message instanceof String){
-            String work = (String) message;
-            getSender().tell(evaluateExpression());
-        } else {
-            unhandled(message);
-        }
+    @Override
+    public Receive createReceive() {
+        return receiveBuilder()
+                .match(String.class, s -> {
+                    log.info("Retrieved String message: {}",s);
+                    getSender().tell(evaluateExpression(), getSelf());
+                })
+                .matchAny(o -> log.info("received unknown message"))
+                .build();
     }
 
     public URL evaluateExpression() throws Exception{
