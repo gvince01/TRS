@@ -20,7 +20,7 @@ public class ClassificationActor extends AbstractActor {
                     log.info("Received ClassifiedImages message: {}", s);
                     getSender().tell(updatePage(s), getSelf());
                 })
-                .matchAny(o -> log.info("recived unknow message"))
+                .matchAny(o -> log.info("recived unknown message"))
                 .build();
     }
 

@@ -18,7 +18,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -54,7 +54,6 @@
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.websocket:javax.websocket-api:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.akka:akka-testkit:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.akka:akka-actor:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.play:play_2.12:2.6.15" level="project" />
@@ -83,6 +82,7 @@
     <orderEntry type="library" name="Maven: org.typelevel:macro-compat_2.12:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:22.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.0.18" level="project" />
     <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
@@ -92,40 +92,8 @@
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.12.4" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.12:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-java_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-iteratees_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-json_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-functional_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-datacommons_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:play-streams_2.11:2.5.18" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-stream_2.11:2.4.20" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe:ssl-config-core_2.11:0.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.play:twirl-api_2.11:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-xml_2.11:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-actor_2.11:2.4.20" level="project" />
-    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-slf4j_2.11:2.4.20" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-stm:scala-stm_2.11:0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.joda:joda-convert:1.8.1" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.11.0" level="project" />
-    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
-    <orderEntry type="library" name="Maven: com.google.inject:guice:4.0" level="project" />
-    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-assistedinject:4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-java8-compat_2.11:0.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.2.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: javax.el:javax.el-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.2.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:4.2.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.10" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.19.0-GA" level="project" />
-    <orderEntry type="library" name="Maven: net.jodah:typetools:0.4.4" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-servlet-api:8.0.33" level="project" />
+    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-http_2.12:10.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-http-core_2.12:10.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-parsing_2.12:10.1.2" level="project" />
   </component>
 </module>
