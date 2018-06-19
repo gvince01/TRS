@@ -1,19 +1,11 @@
 package WebPage;
 
-import ApplicationMain.myMain;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.time.LocalTime;
-import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author gvince01
@@ -24,7 +16,6 @@ public class WebSocketUpdater {
 
     @OnOpen
     public void onOpen(Session session){
-        System.out.println("hello world...");
         try{
             session.getBasicRemote().sendText("Hi there, Euston Road is currently ");
         } catch (IOException ioe) {
