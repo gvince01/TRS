@@ -2,13 +2,12 @@ package ApplicationMain;
 
 import Actors.MasterActor;
 import Messages.Result;
+import WebPage.WebSocketUpdater;
 import akka.actor.*;
 import akka.dispatch.Await;
 import akka.pattern.Patterns;
 import akka.util.Duration;
 import akka.util.Timeout;
-import akka.dispatch.Future;
-import akka.dispatch.Await.*;
 
 public class myMain {
     public static void main(String[] args) throws Exception {

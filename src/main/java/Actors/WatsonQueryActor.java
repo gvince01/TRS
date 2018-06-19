@@ -1,6 +1,7 @@
 package Actors;
 
 import ApplicationLogic.Watson;
+import YAML.LoadYaml;
 import akka.actor.UntypedActor;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 
@@ -22,6 +23,7 @@ public class WatsonQueryActor extends UntypedActor {
     }
 
     private ClassifiedImages classify(URL message) throws IOException {
-        return new Watson().classify(message);
+        LoadYaml classifier = new LoadYaml();
+        return new Watson().classify(message, classifier.getValue("classifier-id"));
     }
 }

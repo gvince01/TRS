@@ -13,18 +13,17 @@ import java.net.URL;
  */
 
 public class Watson {
-    public ClassifiedImages classify(URL imageURL) throws IOException{
+    public ClassifiedImages classify(URL imageURL, String classifierID) throws IOException{
         //takes url, classifies it against custom watson classfier
         LoadYaml watson_yaml = new LoadYaml();
-        String watson_api = watson_yaml.getAPI("watson-api-key");
+        String watson_api = watson_yaml.getValue("watson-api-key");
         IamOptions options = new IamOptions.Builder().apiKey(watson_api).build();
         VisualRecognition service = new VisualRecognition("2018-03-19", options);
         ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
                 .url(imageURL.toString())
                 .imagesFilename("image.jpg")
-                .addClassifierId("congestion_58613629")
+                .addClassifierId(classifierID)
                 .build();
-        ClassifiedImages result = service.classify(classifyOptions).execute();
-        return result;
+        return service.classify(classifyOptions).execute();
     }
 }

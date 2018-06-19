@@ -14,6 +14,6 @@ public class YamlTest {
     @Test
     public void loadYamlTest() throws IOException{
         LoadYaml myYaml = new LoadYaml();;
-        assert(myYaml.getAPI("test-api-key").toString().equals("hello World"));
+        assert(myYaml.getValue("test-api-key").toString().equals("hello World"));
     }
 }

@@ -20,7 +20,7 @@ public class retrieveJson {
     public URL connectToApi(String api_url ,String api_id ,String api_key) throws IOException{
         //takes in the url, apiID and apiKEY from yaml file and returns HTTPURLConnection for other methods to work on
         LoadYaml connectYAML = new LoadYaml();
-        return new URL(MessageFormat.format(connectYAML.getAPI(api_url), connectYAML.getAPI(api_id), connectYAML.getAPI(api_key)));
+        return new URL(MessageFormat.format(connectYAML.getValue(api_url), connectYAML.getValue(api_id), connectYAML.getValue(api_key)));
     }
 
     public JsonObject getJSON(URL conn) {
