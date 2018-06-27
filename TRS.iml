@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
-    <facet type="Spring" name="Spring">
-      <configuration />
-    </facet>
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
@@ -94,6 +91,6 @@
     <orderEntry type="library" name="Maven: com.typesafe.akka:akka-http_2.12:10.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.akka:akka-http-core_2.12:10.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.akka:akka-parsing_2.12:10.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.13.0-M4" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.6" level="project" />
   </component>
 </module>
